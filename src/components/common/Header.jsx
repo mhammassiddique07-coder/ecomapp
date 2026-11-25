@@ -1,41 +1,181 @@
-import React from 'react'
+
+import React, { useState } from 'react'
+import { IoIosCloseCircle } from "react-icons/io";
 
 export default function Header() {
+
+  let [modal, setModal] = useState(false)
+
   return (
     <div>
-     
-<nav class="bg-neutral-primary  w-full z-20 top-0 start-0 border-b border-default">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="https://flowbite.com/docs/images/logo.svg" class="h-7" alt="Flowbite Logo" />
-        <span class="self-center text-xl text-heading font-semibold whitespace-nowrap">Flowbite</span>
-    </a>
-    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary" aria-controls="navbar-default" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/></svg>
-    </button>
-    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
-        <li>
-          <a href="#" class="block py-2 px-3 text-white bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0" aria-current="page">Home</a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">About</a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Services</a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Pricing</a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
- 
+
+      {/* Contact Form Modal */}
+
+      <div className={`fixed p-6 h-[500px] w-[450px] bg-white left-[50%] duration-300 top-[-1000px] translate-x-[-50%] translate-y-[-50%] border rounded-xl shadow-xl overflow-y-auto z-50 ${modal ? 'top-[50%]' : 'top-[-1000px]'}`}>
+
+        <form
+          className="flex flex-col gap-4"
+          onSubmit={(e) => e.preventDefault()}
+        >
+
+          <h2 className="text-2xl font-bold relative text-gray-800">
+            Enquire Now
+
+            <button
+              type="button"
+              onClick={() => setModal(false)}
+              className="absolute right-4 cursor-pointer"
+            >
+              <IoIosCloseCircle />
+            </button>
+          </h2>
+
+          <div className="grid grid-cols-2 gap-4">
+
+            <div className="flex flex-col gap-2">
+              <label className="text-sm font-medium text-gray-700">
+                Full Name
+              </label>
+              <input
+                type="text"
+                placeholder="John Doe"
+                required
+                className="w-full p-3 border border-gray-300 rounded-lg outline-none focus:border-red-500"
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="text-sm font-medium text-gray-700">
+                Email Address
+              </label>
+              <input
+                type="email"
+                placeholder="john@example.com"
+                required
+                className="w-full p-3 border border-gray-300 rounded-lg outline-none focus:border-red-500"
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="text-sm font-medium text-gray-700">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                placeholder="+92 300 1234567"
+                className="w-full p-3 border border-gray-300 rounded-lg outline-none focus:border-red-500"
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="text-sm font-medium text-gray-700">
+                Subject
+              </label>
+              <select
+                defaultValue=""
+                required
+                className="w-full p-3 border border-gray-300 rounded-lg bg-white outline-none focus:border-red-500"
+              >
+                <option value="" disabled>Select a Subject</option>
+                <option value="product">Product Inquiry</option>
+                <option value="order">Order Status</option>
+                <option value="return">Return / Refund</option>
+                <option value="support">Customer Support</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-medium text-gray-700">
+              Your Message
+            </label>
+            <textarea
+              rows="4"
+              placeholder="How can we help you?"
+              required
+              className="w-full p-3 border border-gray-300 rounded-lg outline-none resize-none focus:border-red-500"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold p-3 rounded-lg transition duration-200"
+          >
+            Send Message
+          </button>
+
+        </form>
+      </div>
+
+
+      {/* Navigation Bar */}
+
+      <nav className="bg-neutral-primary w-full z-20 top-0 start-0 border-b border-default">
+
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+
+          <a href="#" className="flex items-center space-x-3">
+            <img
+              src="https://flowbite.com/docs/images/logo.svg"
+              className="h-7"
+              alt="Logo"
+            />
+            <span className="self-center text-xl font-semibold whitespace-nowrap">
+              EcomApp
+            </span>
+          </a>
+
+          <div className="w-full md:block md:w-auto" id="navbar-default">
+
+            <ul className="font-medium items-center flex flex-col p-4 md:p-0 md:flex-row md:space-x-8">
+
+              <li>
+                <a href="#" className="block py-2 px-3">
+                  Home
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="block py-2 px-3">
+                  About
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="block py-2 px-3">
+                  Services
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="block py-2 px-3">
+                  Pricing
+                </a>
+              </li>
+
+              <li>
+                <a href="#" className="block py-2 px-3">
+                  Contact
+                </a>
+              </li>
+
+              <li>
+                <button
+                  onClick={() => setModal(true)}
+                  className="py-3 px-4 bg-amber-400 rounded-lg cursor-pointer"
+                >
+                  Enquire Now
+                </button>
+              </li>
+
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+
     </div>
   )
 }
