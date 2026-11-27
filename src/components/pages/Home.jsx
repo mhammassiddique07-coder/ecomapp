@@ -2,53 +2,60 @@
 import { useState } from "react";
 import { products } from "../common/products.jsx";
 import { womenproducts } from "../../data/womenproducts.jsx";
+import Header from "../common/Header.jsx";
+import Footer from "../common/Footer.jsx";
 
 export default function Home() {
     return (
-        <section className="py-10">
+        <>
+            <Header />
+            <main>
+                <section className="py-10">
 
-            {/* Men's Section */}
+                    {/* Men's Section */}
 
-            <h2 className="text-center font-bold text-4xl">
-                Celebration wear for Men
-            </h2>
+                    <h2 className="text-center font-bold text-4xl">
+                        Celebration wear for Men
+                    </h2>
 
-            <p className="text-center">
-                Welcome to HS Fashion Hub. We have a wide range of celebration wear for men. Our collection includes shirts, pants, and accessories. We have a wide range of colors and styles to choose from.
-            </p>
+                    <p className="text-center">
+                        Welcome to HS Fashion Hub. We have a wide range of celebration wear for men. Our collection includes shirts, pants, and accessories. We have a wide range of colors and styles to choose from.
+                    </p>
 
-            <div className="productSection mx-auto mt-8 grid max-w-screen-xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    <div className="productSection mx-auto mt-8 grid max-w-screen-xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
-                {products.map((obj) => (
-                    <ProductCard
-                        key={obj.id}
-                        data={obj}
-                    />
-                ))}
+                        {products.map((obj) => (
+                            <ProductCard
+                                key={obj.id}
+                                data={obj}
+                            />
+                        ))}
 
-            </div>
+                    </div>
 
-            {/* Women's Section */}
+                    {/* Women's Section */}
 
-            <h2 className="text-center font-bold text-4xl mt-12">
-                Celebration wear for Women
-            </h2>
+                    <h2 className="text-center font-bold text-4xl mt-12">
+                        Celebration wear for Women
+                    </h2>
 
-            <p className="text-center">
-                Welcome to HS Fashion Hub. We have a wide range of celebration wear for women. Our collection includes dresses, tops, bottoms, and accessories. We have a wide range of colors and styles to choose from.
-            </p>
+                    <p className="text-center">
+                        Welcome to HS Fashion Hub. We have a wide range of celebration wear for women. Our collection includes dresses, tops, bottoms, and accessories. We have a wide range of colors and styles to choose from.
+                    </p>
 
-            <div className="mx-auto mt-8 grid max-w-screen-xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {womenproducts.map((obj) => (
-                    <ProductCard
-                        key={obj.id}
-                        data={obj}
-                    />
-                ))}
-            </div>
-
-        </section>
-    )
+                    <div className="mx-auto mt-8 grid max-w-screen-xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                        {womenproducts.map((obj) => (
+                            <ProductCard
+                                key={obj.id}
+                                data={obj}
+                            />
+                        ))}
+                    </div>
+                </section>
+            </main>
+            <Footer />
+        </>
+    );
 }
 
 
@@ -98,5 +105,5 @@ function ProductCard({ data }) {
                 </div>
             </div>
         </article>
-    )
+    );
 }

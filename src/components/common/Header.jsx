@@ -1,6 +1,7 @@
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { IoIosCloseCircle } from "react-icons/io";
+import { Link } from 'react-router-dom';
 
 export default function Header() {
 
@@ -132,33 +133,26 @@ export default function Header() {
             <ul className="font-medium items-center flex flex-col p-4 md:p-0 md:flex-row md:space-x-8">
 
               <li>
-                <a href="#" className="block py-2 px-3">
+                <Link
+                to={"/"} 
+                 className="block py-2 px-3">
                   Home
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a href="#" className="block py-2 px-3">
+                <Link
+                to={"/About"} 
+                 className="block py-2 px-3">
                   About
-                </a>
+                </Link>
               </li>
-
               <li>
-                <a href="#" className="block py-2 px-3">
-                  Services
-                </a>
-              </li>
-
-              <li>
-                <a href="#" className="block py-2 px-3">
-                  Pricing
-                </a>
-              </li>
-
-              <li>
-                <a href="#" className="block py-2 px-3">
+                <Link
+                to={"/Contact"} 
+                className="block py-2 px-3">
                   Contact
-                </a>
+                </Link>
               </li>
 
               <li>
@@ -168,6 +162,13 @@ export default function Header() {
                 >
                   Enquire Now
                 </button>
+              </li>
+              <li>
+                <Link
+                to={"/faq"} 
+                 className="block py-2 px-3">
+                  FAQ's
+                </Link>
               </li>
 
             </ul>
